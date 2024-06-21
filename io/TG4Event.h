@@ -7,6 +7,8 @@
 
 #include <TObject.h>
 
+#include <string>
+
 class TG4Event : public TObject {
 public:
     TG4Event(void) {}
@@ -37,6 +39,9 @@ public:
     /// A map of sensitive detector names and vectors of hit segments.  The
     /// map is keyed using the sensitive volume name.
     TG4HitSegmentDetectors SegmentDetectors;
+    int GetNumSegmentDetectors();
+    std::vector<std::string> GetSegmentDetectorNameList();
+
 
     ClassDef(TG4Event,1)
 };
