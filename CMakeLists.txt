@@ -44,6 +44,22 @@ if(ROOT_FOUND)
   include(${ROOT_USE_FILE})
 endif(ROOT_FOUND)
 
+# we set the compiler version based on the one used for ROOT
+execute_process(
+    COMMAND bash "-c" "root-config --features | awk '{print $1}'"
+    OUTPUT_VARIABLE TEST_ROOT_CXX_STANDARD )
+if (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx17")
+  message( STATUS "using cxx17")
+  set(CMAKE_CXX_STANDARD 17)
+elseif (${TEST_ROOT_CXX_STANDARD} MATCHES "cxx14")
+  message(STATUS "using cxx14")
+  set(CMAKE_CXX_STANDARD 14)
+else ()
+  message( STATUS "using cxx11")  
+  set(CMAKE_CXX_STANDARD 11)
+endif()
+
+
 # Look for GEANT4.  If it's found, then build the simulation.
 # Otherwise, this can be skipped, but only the i/o library is built.
 if(NOT EDEPSIM_READONLY)
