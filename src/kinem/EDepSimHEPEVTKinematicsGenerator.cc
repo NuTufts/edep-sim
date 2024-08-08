@@ -125,9 +125,9 @@ EDepSim::HEPEVTKinematicsGenerator::GeneratePrimaryVertex(
     // of particles is the only required field. Vertex positions should
     // be given in cm, and the time should be in ns.
     if (!GetTokens(tokens)) {
-        EDepSimLog("No more events in " << fFileName
+      EDepSimLog("No more events in " << fFileName
                    << " after " << fCurrentLine << " lines");
-        throw EDepSim::NoMoreEvents();
+      throw EDepSim::NoMoreEvents();
     }
     switch (tokens.size()) {
     // For pythia flavor input, the number of particle in the event

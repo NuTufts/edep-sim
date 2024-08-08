@@ -7,6 +7,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 
@@ -59,6 +60,12 @@ public:
     /// SetAllowEmptyEvents() has been called with true.
     void SetAddFakeGeantino(bool flag) {fAddFakeGeantino = flag;}
 
+    /// Set the path to an input json file that is parsed to provide
+    /// the primary particles to simulate. This is implemented
+    /// for MARLEY and for DarkNews.
+    /// Setting this path, also activates the input file as a generator source
+  //void SetJSONInputFilePath( std::string json_input_path );
+
 private:
 
     /// A vector of generator sets to use to generate events.  Each of these
@@ -79,7 +86,19 @@ private:
     /// event containing every interaction in the kinematic input file.
     bool fAllowPartialEvents;
 
+//     /// path to input json file, if user chooses to add particles to an event via this mechanism
+//     bool fUseJSONInput;
+//     std::string fjson_input_path;
+//     // elements for json parser
+//     std::ifstream json_filepoint;
+//     size_t fcurrent_json_entry;
+//     size_t ftotal_json_entries;
+// #ifdef EDEPSIM_HAS_JSON
+//     nlohmann::json json_event_block; /// object for parseing the contents of block: "events":[{...},{...},...],
+// #endif
+  
     /// The messenger for this action
     EDepSim::UserPrimaryGeneratorMessenger* fMessenger;
+
 };
 #endif

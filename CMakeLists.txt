@@ -37,6 +37,13 @@ else(DOXYGEN_FOUND)
     COMMENT "Not generating API documentation with Doxygen" VERBATIM)
 endif(DOXYGEN_FOUND)
 
+find_package(nlohmann_json)
+if(NLOHMANN_JSON_FOUND)
+  message( STATUS "Found nlohmann::json, activating json file input via compiler definition, '-DEDEPSIM_HAS_JSON'" )
+  add_definitions( -DEDEPSIM_HAS_JSON )
+endif()
+  
+
 # Make sure that ROOT is available.  ROOT is absolutely required.
 find_package(ROOT REQUIRED
   COMPONENTS Geom Physics Matrix MathCore Tree RIO)

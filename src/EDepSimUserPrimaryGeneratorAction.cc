@@ -82,3 +82,4 @@ void EDepSim::UserPrimaryGeneratorAction::ClearGenerators() {
     }
     fPrimaryGenerators.clear();
 }
+
